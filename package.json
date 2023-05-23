@@ -1,0 +1,16 @@
+{
+    "name": "ft-engine",
+    "description": "Fil Toolkit's Engine",
+    "repository": "git@github.com:fil-studio/ft-engine.git",
+    "homepage": "https://github.com/fil-studio/ft-engine/",
+    "author": "fil studio <hello@fil.studio>",
+    "license": "Apache-2.0",
+    "private": true,
+    "workspaces": [
+      "packages/*"
+    ],
+    "dependencies": {
+      "three": "^0.150.0"
+    }
+  }
+  

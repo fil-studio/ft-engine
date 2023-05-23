@@ -1,0 +1,28 @@
+{
+	"name": "@ft-engine/three",
+	"version": "0.0.1",
+	"description": "Fil Toolkit's parsers and utilities for standard scenes, material and texture libraries.",
+	"module": "lib/main.js",
+	"main": "lib/main.js",
+	"repository": "git@github.com:fil-studio/ft-engine.git",
+	"homepage": "https://github.com/fil-studio/ft-engine/tree/main/packages/three",
+	"author": "fil studio <hello@fil.studio>",
+	"license": "Apache-2.0",
+	"private": false,
+	"scripts": {
+		"prepare": "yarn build",
+		"build": "tsc"
+	},
+	"files": [
+		"lib"
+	],
+	"peerDependencies": {
+		"three": "^0.150.0"
+	},
+	"devDependencies": {
+		"typescript": "^4.8.4"
+	},
+	"dependencies": {
+		"@fils/vfx": "^0.0.13"
+	}
+}

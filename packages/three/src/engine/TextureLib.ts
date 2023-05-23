@@ -19,8 +19,8 @@ export type TextureProperty = boolean|number|string|Vector2;
 
 export const TextureDefaults = new Texture();
 
-const tLoader = new TextureLoader();
-const ktx2Loader = new KTX2Loader();
+export const tLoader = new TextureLoader();
+export const ktx2Loader = new KTX2Loader();
 tLoader.crossOrigin = 'anonymous';
 
 const blackList = ['mipmaps', 'matrix', 'uuid', 'image', 'source', 'userData', 'format', 'generateMipmaps'];

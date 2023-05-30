@@ -145,7 +145,6 @@ export type ObjectData = {
     castShadow?:boolean;
     receiveShadow?:boolean;
     data?:ObjectTypedData;
-
     children:ObjectData[];
 }
 

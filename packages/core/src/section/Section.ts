@@ -1,7 +1,7 @@
-import { SectionData } from "../data/SectionData";
+import { PluginData, SectionData } from "../data/SectionData";
 
 export interface SectionDataListener {
-	onSectionDataImported(data: Record<string, Object>);
+	onSectionDataImported(data: Record<string, Object>, plugins?: Record<string, PluginData>);
 }
 
 /**
@@ -15,6 +15,7 @@ export class Section {
 	data: Record<string, Object> = {};
 	private listeners: Array<SectionDataListener> = [];
 	private imported: boolean = false;
+    plugins: Record<string, PluginData> = {};
 
 	constructor(id: string) {
 		this.uid = id;
@@ -39,18 +40,21 @@ export class Section {
 		if (this.imported) return console.warn('Section already imported!');
 		this.imported = true;
 		this.data = s.data;
+        this.plugins = s.plugins;
 		this.onImport();
 	}
 	export(): SectionData {
 		return {
 			id: this.uid,
-			data: this.data
+			data: this.data,
+            plugins: this.plugins
 		}
 	}
 
 	protected onImport() {
 		for (const lis of this.listeners) {
-			lis.onSectionDataImported(this.export().data);
+            const sec = this.export();
+			lis.onSectionDataImported(sec.data, sec.plugins);
 		}
 	}
 }

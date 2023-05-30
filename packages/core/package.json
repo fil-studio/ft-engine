@@ -1,6 +1,6 @@
 {
     "name": "@ft-engine/core",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Fil Toolkit's core data interfaces.",
     "module": "lib/main.js",
     "main": "lib/main.js",

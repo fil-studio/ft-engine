@@ -22,11 +22,11 @@ export function applyMatrixToObject(obj:Object3D, m:Matrix4) {
 }
 
 export type SceneSettings = {
-    outputEncoding:number;
-    toneMapping:number;
+    outputEncoding:TextureEncoding;
+    toneMapping:ToneMapping;
     toneMappingExposure:number;
     shadows:boolean;
-    shadowType?:number;
+    shadowType?:ShadowMapType;
     shadowMapSize?:number;
     background:{
         color:string;

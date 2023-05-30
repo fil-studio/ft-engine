@@ -58,7 +58,7 @@ export function compareTextureValues(value1: TextureProperty, value2: TexturePro
 
 export class TextureLib {
     textures:Record<string, Texture> = {};
-    protected data:Record<string, TextureDefinition> = {};
+    data:Record<string, TextureDefinition> = {};
     type:string = "TextureLib";
     protected baseURL:string = "/assets/textures/";
 

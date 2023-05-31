@@ -257,6 +257,7 @@ function applyObjectBasics(obj:ObjectData, el:Object3D) {
     el.frustumCulled = obj.fustrumCulled !== false;
     el.castShadow = obj.castShadow === true;
     el.receiveShadow = obj.receiveShadow === true;
+    el.updateMatrixWorld(true);
 }
 
 function parseBones(scene:Object3D[]):Record<string,Bone> {

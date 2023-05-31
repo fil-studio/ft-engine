@@ -1,6 +1,6 @@
 {
   "name": "@ft-engine/three",
-  "version": "0.0.44",
+  "version": "0.0.45",
   "description": "Fil Toolkit's parsers and utilities for standard scenes, material and texture libraries.",
   "module": "lib/main.js",
   "main": "lib/main.js",

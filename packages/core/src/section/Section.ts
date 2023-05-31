@@ -1,7 +1,7 @@
 import { AddonData, SectionData } from "../data/SectionData";
 
 export interface SectionDataListener {
-	onSectionDataImported(data: Record<string, Object>, addons?: AddonData[]);
+	onSectionDataImported(data: Record<string, Object>, addons?: Record<string, AddonData>);
 }
 
 /**
@@ -15,7 +15,7 @@ export class Section {
 	data: Record<string, Object> = {};
 	private listeners: Array<SectionDataListener> = [];
 	private imported: boolean = false;
-    addons: AddonData[] = [];
+    addons: Record<string, AddonData>;
 
 	constructor(id: string) {
 		this.uid = id;

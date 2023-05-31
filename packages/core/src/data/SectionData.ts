@@ -1,10 +1,11 @@
 export interface AddonData {
     type:string;
     data:Record<string, Object>;
+    instances?:Record<string,Object>;
 }
 
 export interface SectionData {
     id:string;
     data:Record<string, Object>;
-    addons?:AddonData[];
+    addons?:Record<string, AddonData>;
 }

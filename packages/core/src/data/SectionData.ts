@@ -6,5 +6,5 @@ export interface AddonData {
 export interface SectionData {
     id:string;
     data:Record<string, Object>;
-    addons?:Record<string, AddonData>;
+    addons?:AddonData[];
 }

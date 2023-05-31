@@ -1,4 +1,4 @@
-export interface PluginData {
+export interface AddonData {
     type:string;
     data:Record<string, Object>;
 }
@@ -6,5 +6,5 @@ export interface PluginData {
 export interface SectionData {
     id:string;
     data:Record<string, Object>;
-    plugins?:Record<string, PluginData>;
+    addons?:Record<string, AddonData>;
 }

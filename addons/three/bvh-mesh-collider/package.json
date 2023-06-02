@@ -1,14 +1,14 @@
 {
-  "name": "@ft-engine/three",
-  "version": "0.0.49",
-  "description": "Fil Toolkit's parsers and utilities for standard scenes, material and texture libraries.",
+  "name": "@ft-engine/three-bvh-mesh-collider",
+  "version": "0.0.2",
+  "description": "Fil Engine's Three BVH Mesh Collider Addon",
   "module": "lib/main.js",
   "main": "lib/main.js",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/fil-studio/ft-engine.git"
   },
-  "homepage": "https://github.com/fil-studio/ft-engine/tree/main/packages/three",
+  "homepage": "https://github.com/fil-studio/ft-engine/tree/main/addons/three/bvh-mesh-collider",
   "author": "fil studio <hello@fil.studio>",
   "license": "Apache-2.0",
   "private": false,
@@ -19,15 +19,12 @@
   "files": [
     "lib"
   ],
-  "peerDependencies": {
-    "three": "^0.151.3"
-  },
   "devDependencies": {
+    "@types/three": "^0.152.1",
     "typescript": "^4.8.4"
   },
-  "dependencies": {
-    "@fils/vfx": "^0.0.13",
-    "@ft-engine/core": "^0.0.304"
+  "peerDependencies": {
+    "three": "^0.153.0"
   },
   "types": "./lib/main.d.ts",
   "bugs": {
@@ -35,5 +32,8 @@
   },
   "directories": {
     "lib": "lib"
+  },
+  "dependencies": {
+    "three-mesh-bvh": "^0.6.0"
   }
 }

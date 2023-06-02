@@ -2,6 +2,7 @@ import { Scene, WebGLRenderer } from "three";
 import { AnimationDescriptor, SceneData, SceneParser } from "./SceneParser";
 import { MaterialLib } from "./MaterialLib";
 import { TextureLib } from "./TextureLib";
+import { AddonData } from "@ft-engine/core";
 
 export interface SceneWrapperSettings {
     applyHDRI?:boolean;
@@ -29,7 +30,7 @@ export class SceneWrapper {
         SceneParser.load(
             this.id,
             this.materialLib,
-            (els, data, tLib) => {
+            (els, data, tLib, addons) => {
                 this.textureLib = tLib;
 				for(const el of els) {
 					this.scene.add(el);
@@ -37,7 +38,7 @@ export class SceneWrapper {
 				const animations = SceneParser.initAnimations(data, this.scene);
 				// console.log(animations);
 				this.animations = animations;
-                this.onLoaded(data);
+                this.onLoaded(data, addons);
                 onLoaded();
 			},
 			(progress:number) => {
@@ -46,7 +47,7 @@ export class SceneWrapper {
         );
     }
 
-    protected onLoaded(data:SceneData) {
+    protected onLoaded(data:SceneData, addons?:Record<string, AddonData>) {
         this.loaded = true;
         if(!this.settings) return;
         if(this.settings.applyBackgroundTexture) {

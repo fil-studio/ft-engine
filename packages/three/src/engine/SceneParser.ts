@@ -12,6 +12,7 @@ import { AnimationClip, AnimationMixer, Bone, BufferAttribute, BufferGeometry, D
 import { MaterialDefinition, MaterialLib } from "./MaterialLib";
 import { TextureDefinition, TextureLib } from "./TextureLib";
 import { io } from "@fils/io";
+import { AddonData, SectionData } from "@ft-engine/core";
 
 export function applyMatrixToObject(obj:Object3D, m:Matrix4) {
     if(!obj) return;
@@ -405,12 +406,13 @@ export class SceneParser {
         SceneParser.basePath = url;
     }
 
-    static load(scene:string, mLib:MaterialLib, onLoaded:Function=(els, data, tLib)=>{}, onProgress:Function=(progress:number)=>{}) {
+    static load(scene:string, mLib:MaterialLib, onLoaded:Function=(els, data, tLib, addons?:Record<string,AddonData> )=>{}, onProgress:Function=(progress:number)=>{}) {
         if(!SceneParser.renderer) {
             return console.warn("Scene Parser is not initialized!");
         }
         io.load(`${SceneParser.basePath}sections/${scene}.json.gz`, (res)=>{
-            const data = JSON.parse(res).data as SceneData;
+            const section = JSON.parse(res) as SectionData;
+            const data = section.data as SceneData;
             // console.log(data);
             onProgress( .4 );
             const t = new TextureLib(SceneParser.renderer);
@@ -419,7 +421,8 @@ export class SceneParser {
                 for(const uuid in data.materials) {
                     mLib.addMaterial(data.materials[uuid], t);
                 }
-                onLoaded(parseScene(data, mLib), data, t);
+                const addons = section.addons;
+                onLoaded(parseScene(data, mLib), data, t, addons);
             },
             (progress) => {
               onProgress(.4 + .6 * progress);

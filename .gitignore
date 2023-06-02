@@ -114,3 +114,4 @@ yarn.lock
 package-lock.json
 
 packages/*/lib
+addons/*/*/lib

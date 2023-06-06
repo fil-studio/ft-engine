@@ -1,5 +1,5 @@
-# @ft-engine/three-bvh-mesh-collider
-Addon integrating [three-mesh-bvh](https://www.npmjs.com/package/three-mesh-bvh) for creating optimized bvh mesh colliders.
+# @ft-engine/instancing
+Addon integrating instancing.
 
 ### License
 © Copyright 2023, fil studio

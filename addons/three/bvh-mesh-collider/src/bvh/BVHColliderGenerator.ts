@@ -1,5 +1,5 @@
 import { AddonData } from "@ft-engine/core";
-import { BufferAttribute, BufferGeometry, InterleavedBufferAttribute, Mesh, MeshBasicMaterial, Scene } from "three";
+import { BufferAttribute, BufferGeometry, InstancedMesh, InterleavedBufferAttribute, Matrix4, Mesh, MeshBasicMaterial, Scene } from "three";
 import { MeshBVH, MeshBVHVisualizer, StaticGeometryGenerator } from "three-mesh-bvh";
 import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 
@@ -46,21 +46,37 @@ export class BVHColliderGenerator {
     static generate(scene:Scene, data:BVHMeshColliderData ):BufferGeometry {
         const geos = [];
         const meshes = [];
+        const tmp = new Matrix4();
         scene.traverse(obj => {
             if(obj.type === "Mesh") {
-                if(data.instances[obj.uuid]) {
-                    meshes.push(obj as Mesh);
+                if(obj['isInstancedMesh']) {
+                    const im = obj as InstancedMesh;
+                    console.log(`Found Instanced Mesh with ${im.count} instances`);
+
+                    for(let i=0; i<im.count;i++) {
+                        const mesh = new Mesh(im.geometry);
+                        im.getMatrixAt(i, tmp);
+                        mesh.applyMatrix4(tmp);
+                        mesh.updateMatrixWorld(true);
+                        meshes.push(mesh);
+                    }
+                } else {
+                    if(data.instances[obj.uuid]) {
+                        meshes.push(obj as Mesh);
+                    }
+                    // editor only
+                    else if(obj.userData.isInstance && data.instances[obj.userData.instanceSeed.uuid]) {
+                        meshes.push(obj as Mesh);
+                    }
                 }
             }
         });
-        // const environment = new Group();
-
+        
         if(!meshes.length) return null;
 
         for(const mesh of meshes) {
             let geom;
             if(mesh.geometry.attributes.position.isInterleavedBufferAttribute) {
-                console.log('Interleaved buffer geometry!');
                 geom = interleaved2buffers(mesh.geometry.clone());
                 
             } else {

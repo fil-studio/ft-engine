@@ -1,6 +1,6 @@
 {
   "name": "@ft-engine/three-bvh-mesh-collider",
-  "version": "0.0.2",
+  "version": "0.0.6",
   "description": "Fil Engine's Three BVH Mesh Collider Addon",
   "module": "lib/main.js",
   "main": "lib/main.js",

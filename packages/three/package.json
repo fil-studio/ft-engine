@@ -1,6 +1,6 @@
 {
   "name": "@ft-engine/three",
-  "version": "0.0.49",
+  "version": "0.0.5",
   "description": "Fil Toolkit's parsers and utilities for standard scenes, material and texture libraries.",
   "module": "lib/main.js",
   "main": "lib/main.js",
@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@fils/vfx": "^0.0.13",
-    "@ft-engine/core": "^0.0.304"
+    "@ft-engine/core": "^0.0.4"
   },
   "types": "./lib/main.d.ts",
   "bugs": {

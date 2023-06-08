@@ -12,7 +12,7 @@ import { AnimationClip, AnimationMixer, Bone, BufferAttribute, BufferGeometry, D
 import { MaterialDefinition, MaterialLib } from "./MaterialLib";
 import { TextureDefinition, TextureLib } from "./TextureLib";
 import { io } from "@fils/io";
-import { AddonData, SectionData } from "@ft-engine/core";
+import { AddonData, ArrayLikeString, SectionData } from "@ft-engine/core";
 
 export function applyMatrixToObject(obj:Object3D, m:Matrix4) {
     if(!obj) return;
@@ -59,19 +59,7 @@ export type FogSettings = {
     params:LinearFogParams|ExponentialFogParams;
 }
 
-export type ArrayLikeString =
-    'Int8Array' |
-    'Uint8Array' |
-    'Uint8ClampedArray' |
-    'Int16Array' |
-    'Uint16Array' |
-    'Int32Array' |
-    'Uint32Array' |
-    'Float32Array' |
-    'Float64Array';
-
 export type InteleavedBufferData = {
-    uuid:string;
     buffer:string;
     type:ArrayLikeString;
     stride:number;
@@ -85,7 +73,6 @@ export type GeometryAttributeData = {
 }
 
 export type GeometryData = {
-    uuid:string;
     attributes:Record<string, GeometryAttributeData>;
     index:{
         type:string;
@@ -419,7 +406,7 @@ export class SceneParser {
             t.setBasePath(`${SceneParser.basePath}textures/`);
             t.import(data.textures, ()=>{
                 for(const uuid in data.materials) {
-                    mLib.addMaterial(data.materials[uuid], t);
+                    mLib.addMaterial(uuid, data.materials[uuid], t);
                 }
                 const addons = section.addons;
                 onLoaded(parseScene(data, mLib), data, t, addons);

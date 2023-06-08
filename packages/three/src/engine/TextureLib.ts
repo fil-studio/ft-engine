@@ -2,7 +2,7 @@ import { Texture, TextureLoader, Vector2, WebGLRenderer } from 'three';
 import { KTX2Loader } from 'three/examples/jsm/loaders/KTX2Loader.js';
 
 export interface TextureDefinition {
-    uuid:string;
+    uuid?:string;
     data:Record<string,TextureProperty>;
     format:"jpg"|"png"|"webp";
     ktx:KTXData;

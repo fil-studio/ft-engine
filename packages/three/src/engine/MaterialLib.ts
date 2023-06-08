@@ -6,7 +6,6 @@ export type MaterialProperty = number|boolean|string|Color|Texture|Vector2;
 export type MaterialDataProperty = number|boolean|string|Object;
 
 export type MaterialDefinition = {
-    uuid:string;
     type:string;
     data:Record<string,MaterialProperty>; // depends on material type. can be extended
 }
@@ -127,7 +126,7 @@ export class MaterialLib {
         return ObjectMaterialDefault;
     }
 
-    getMaterialInstance(mat:MaterialDefinition, textureLibrary:TextureLib):SceneMaterial {
+    getMaterialInstance(uuid:string, mat:MaterialDefinition, textureLibrary:TextureLib):SceneMaterial {
         let m:SceneMaterial;
         if(mat.type === "MeshBasicMaterial") {
             m = initMaterial(new MeshBasicMaterial()) as MeshBasicMaterial;
@@ -136,20 +135,21 @@ export class MaterialLib {
         } else {
             m = initMaterial(new MeshStandardMaterial()) as MeshStandardMaterial;
         }
-        m.uuid = mat.uuid;
+        m.uuid = uuid;
         setMaterialProperties(m, mat, textureLibrary);
 
         return m;
     }
 
-    addMaterial(mat:MaterialDefinition, textureLibrary:TextureLib) {
-        // console.log(`Adding Material: ${mat.uuid}`);
+    addMaterial(uuid:string, mat:MaterialDefinition, textureLibrary:TextureLib) {
+        console.log(`Adding Material: ${uuid}`);
+        console.log(mat);
 
-        if(this.materials[mat.uuid]) {
-            return console.warn(`Material ${mat.uuid} already defined!`);
+        if(this.materials[uuid]) {
+            return console.warn(`Material ${uuid} already defined!`);
         }
 
-        this.materials[mat.uuid] = this.getMaterialInstance(mat, textureLibrary);
+        this.materials[uuid] = this.getMaterialInstance(uuid, mat, textureLibrary);
     }
 
     getMaterial(uuid:string):SceneMaterial {

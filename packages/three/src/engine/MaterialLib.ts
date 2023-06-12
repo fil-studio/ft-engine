@@ -1,7 +1,7 @@
 import { initMaterial } from "@fils/vfx";
-import { Color, MeshBasicMaterial, MeshPhongMaterial, MeshStandardMaterial, Texture, Vector2 } from "three";
-import { TextureLib } from "./TextureLib";
+import { Color, MeshPhongMaterial, MeshStandardMaterial, Texture, Vector2 } from "three";
 import { MeshUnlitMaterial } from "./MeshUnlitMaterial";
+import { TextureLib } from "./TextureLib";
 
 export type MaterialProperty = number|boolean|string|Color|Texture|Vector2;
 export type MaterialDataProperty = number|boolean|string|Object;

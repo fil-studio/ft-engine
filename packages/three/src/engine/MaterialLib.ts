@@ -144,7 +144,6 @@ export class MaterialLib {
 
     addMaterial(uuid:string, mat:MaterialDefinition, textureLibrary:TextureLib) {
         console.log(`Adding Material: ${uuid}`);
-        console.log(mat);
 
         if(this.materials[uuid]) {
             return console.warn(`Material ${uuid} already defined!`);

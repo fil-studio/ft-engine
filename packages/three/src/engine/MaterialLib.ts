@@ -1,6 +1,7 @@
 import { initMaterial } from "@fils/vfx";
 import { Color, MeshBasicMaterial, MeshPhongMaterial, MeshStandardMaterial, Texture, Vector2 } from "three";
 import { TextureLib } from "./TextureLib";
+import { MeshUnlitMaterial } from "./MeshUnlitMaterial";
 
 export type MaterialProperty = number|boolean|string|Color|Texture|Vector2;
 export type MaterialDataProperty = number|boolean|string|Object;
@@ -10,15 +11,15 @@ export type MaterialDefinition = {
     data:Record<string,MaterialProperty>; // depends on material type. can be extended
 }
 
-export type SceneMaterial = MeshBasicMaterial|MeshPhongMaterial|MeshStandardMaterial;
+export type SceneMaterial = MeshUnlitMaterial|MeshPhongMaterial|MeshStandardMaterial;
 
-const ObjectMaterialDefault = new MeshBasicMaterial({
+const ObjectMaterialDefault = new MeshUnlitMaterial({
     name: 'Not assigned',
     color: 0xff00ff
 });
 
 const MaterialDefaults = {
-    Unlit: initMaterial(new MeshBasicMaterial()) as MeshBasicMaterial,
+    Unlit: new MeshUnlitMaterial(),//initMaterial(new MeshUnlitMaterial()) as MeshUnlitMaterial,
     Phong: initMaterial(new MeshPhongMaterial()) as MeshPhongMaterial,
     Standard: initMaterial(new MeshStandardMaterial()) as MeshStandardMaterial
 }
@@ -35,7 +36,7 @@ export function getMaterialProperty(value:MaterialProperty):MaterialDataProperty
 }
 
 export function getMaterialDefaults(mat:SceneMaterial):SceneMaterial {
-    if(mat instanceof MeshBasicMaterial) return MaterialDefaults.Unlit;
+    if(mat instanceof MeshUnlitMaterial) return MaterialDefaults.Unlit;
     else if (mat instanceof MeshPhongMaterial) return MaterialDefaults.Phong;
     return MaterialDefaults.Standard;
 }
@@ -129,7 +130,7 @@ export class MaterialLib {
     getMaterialInstance(uuid:string, mat:MaterialDefinition, textureLibrary:TextureLib):SceneMaterial {
         let m:SceneMaterial;
         if(mat.type === "MeshBasicMaterial") {
-            m = initMaterial(new MeshBasicMaterial()) as MeshBasicMaterial;
+            m = new MeshUnlitMaterial();//initMaterial(new MeshUnlitMaterial()) as MeshUnlitMaterial;
         } else if(mat.type === "MeshPhongMaterial") {
             m = initMaterial(new MeshPhongMaterial()) as MeshPhongMaterial;
         } else {

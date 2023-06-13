@@ -17,6 +17,9 @@ export class SceneWrapper {
     textureLib:TextureLib;
     protected loaded:boolean = false;
     protected settings:SceneWrapperSettings;
+    
+    data:SceneData;
+    addons:Record<string, AddonData>;
 
     constructor(_id:string, mLib:MaterialLib, _settings?:SceneWrapperSettings) {
         this.id = _id;
@@ -48,7 +51,10 @@ export class SceneWrapper {
     }
 
     protected onLoaded(data:SceneData, addons?:Record<string, AddonData>) {
+        if(this.loaded) return;
         this.loaded = true;
+        this.data = data;
+        this.addons = addons;
         if(!this.settings) return;
         if(this.settings.applyBackgroundTexture) {
             SceneParser.applyBackgroundTextureToScene(this.scene, data.settings, this.textureLib);

@@ -1,4 +1,4 @@
-import { Color, MeshBasicMaterial, MeshBasicMaterialParameters, Shader, ShaderChunk, ShaderLib, Texture, UniformsLib, WebGLRenderer } from "three";
+import { Color, MeshBasicMaterial, MeshBasicMaterialParameters, Shader, Texture, UniformsLib, WebGLRenderer } from "three";
 
 import { injectVFXBasics } from "@fils/vfx";
 
@@ -23,7 +23,7 @@ export class MeshUnlitMaterial extends MeshBasicMaterial {
         shader.fragmentShader = fs;
         shader.uniforms.emissive = { value: /*@__PURE__*/ new Color( 0x000000 ) };
         for(const k in UniformsLib.emissivemap) {
-            ShaderLib.basic.uniforms[k] = UniformsLib.emissivemap[k];
+            shader.uniforms[k] = UniformsLib.emissivemap[k];
         }
         injectVFXBasics(shader, true);
     }

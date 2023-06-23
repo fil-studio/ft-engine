@@ -1,14 +1,14 @@
 {
-    "name": "@ft-engine/three-instancing",
-    "version": "0.0.2",
-    "description": "Fil Engine's Three Instancing Addon",
+    "name": "@ft-engine/three-audio3d",
+    "version": "0.0.1",
+    "description": "Fil Engine's Audio 3D Addon",
     "module": "lib/main.js",
     "main": "lib/main.js",
     "repository": {
       "type": "git",
       "url": "git+ssh://git@github.com/fil-studio/ft-engine.git"
     },
-    "homepage": "https://github.com/fil-studio/ft-engine/tree/main/addons/three/instancing",
+    "homepage": "https://github.com/fil-studio/ft-engine/tree/main/addons/three/audio-3d",
     "author": "fil studio <hello@fil.studio>",
     "license": "Apache-2.0",
     "private": false,
@@ -34,4 +34,3 @@
       "lib": "lib"
     }
   }
-  

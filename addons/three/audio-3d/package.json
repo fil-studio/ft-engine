@@ -1,36 +1,39 @@
 {
-    "name": "@ft-engine/three-audio3d",
-    "version": "0.0.1",
-    "description": "Fil Engine's Audio 3D Addon",
-    "module": "lib/main.js",
-    "main": "lib/main.js",
-    "repository": {
-      "type": "git",
-      "url": "git+ssh://git@github.com/fil-studio/ft-engine.git"
-    },
-    "homepage": "https://github.com/fil-studio/ft-engine/tree/main/addons/three/audio-3d",
-    "author": "fil studio <hello@fil.studio>",
-    "license": "Apache-2.0",
-    "private": false,
-    "scripts": {
-      "prepare": "yarn build",
-      "build": "tsc"
-    },
-    "files": [
-      "lib"
-    ],
-    "devDependencies": {
-      "@types/three": "^0.152.1",
-      "typescript": "^4.8.4"
-    },
-    "peerDependencies": {
-      "three": "^0.153.0"
-    },
-    "types": "./lib/main.d.ts",
-    "bugs": {
-      "url": "https://github.com/fil-studio/ft-engine/issues"
-    },
-    "directories": {
-      "lib": "lib"
-    }
+  "name": "@ft-engine/three-audio3d",
+  "version": "0.0.4",
+  "description": "Fil Engine's Audio 3D Addon",
+  "module": "lib/main.js",
+  "main": "lib/main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/fil-studio/ft-engine.git"
+  },
+  "homepage": "https://github.com/fil-studio/ft-engine/tree/main/addons/three/audio-3d",
+  "author": "fil studio <hello@fil.studio>",
+  "license": "Apache-2.0",
+  "private": false,
+  "scripts": {
+    "prepare": "yarn build",
+    "build": "tsc"
+  },
+  "files": [
+    "lib"
+  ],
+  "devDependencies": {
+    "@types/three": "^0.152.1",
+    "typescript": "^4.8.4"
+  },
+  "peerDependencies": {
+    "three": "^0.153.0"
+  },
+  "types": "./lib/main.d.ts",
+  "bugs": {
+    "url": "https://github.com/fil-studio/ft-engine/issues"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "@ft-engine/core": "^0.0.4"
   }
+}

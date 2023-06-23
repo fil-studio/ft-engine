@@ -1,6 +1,5 @@
 import { AddonData } from "@ft-engine/core";
 import { Vector3 } from "three";
-import { generateUUID } from "three/src/math/MathUtils";
 
 // Veure que falta aqui
 export interface Audio3DData {

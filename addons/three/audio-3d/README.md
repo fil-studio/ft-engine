@@ -1,5 +1,5 @@
 # @ft-engine/instancing
-Addon integrating instancing.
+Addon for adding support to Audio 3D
 
 ### License
 © Copyright 2023, fil studio

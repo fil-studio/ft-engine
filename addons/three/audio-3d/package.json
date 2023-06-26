@@ -1,6 +1,6 @@
 {
   "name": "@ft-engine/three-audio3d",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Fil Engine's Audio 3D Addon",
   "module": "lib/main.js",
   "main": "lib/main.js",

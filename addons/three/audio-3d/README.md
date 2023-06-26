@@ -1,4 +1,4 @@
-# @ft-engine/instancing
+# @ft-engine/three-audio3d
 Addon for adding support to Audio 3D
 
 ### License

@@ -20,3 +20,28 @@ export interface AudioAddonData extends AddonData {
 	data: Record<string, AudioFile>;
 	instances: Record<string, AudioDataDescriptor>;
 }
+
+const LoadAudioFile = async (ctx:AudioContext, filePath:string):Promise<AudioBuffer> => {
+	const response = await fetch(filePath);
+	const arrayBuffer = await response.arrayBuffer();
+	const audioBuffer = await ctx.decodeAudioData(arrayBuffer);
+	return audioBuffer;
+}
+
+export interface GeneratedAudio {
+	context: AudioContext,
+	buffer: AudioBuffer
+}
+
+export class AudioGenerator {
+	static async getAudio(path: string): Promise<GeneratedAudio> {
+		const context = new AudioContext();
+
+		const buffer = await LoadAudioFile(context, path);
+
+		return {
+			context,
+			buffer
+		};
+	}
+}

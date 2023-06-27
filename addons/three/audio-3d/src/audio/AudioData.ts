@@ -1,22 +1,22 @@
 import { AddonData } from "@ft-engine/core";
 import { Vector3 } from "three";
 
-export interface AudioData {
-	uid: string,
-	pan: number,
-	volume: number
+export interface AudioFile {
+	name: string,
+	format: "wav" | "mp3"
 }
-export interface Audio3DData extends AudioData {
+export interface AudioData {
 	innerRadius: number,
 	outerRadius: number,
 	position: Vector3
 }
 
 export interface AudioDataDescriptor {
-	type: '2d' | '3d';
-	data: AudioData | Audio3DData;
+	fileId: string;
+	data: AudioData;
 }
 
 export interface AudioAddonData extends AddonData {
+	data: Record<string, AudioFile>;
 	instances: Record<string, AudioDataDescriptor>;
 }

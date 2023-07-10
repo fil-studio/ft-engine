@@ -18,7 +18,8 @@ export class MeshUnlitMaterial extends MeshBasicMaterial {
         fs = fs.replace(`#include <lightmap_pars_fragment>`, `#include <lightmap_pars_fragment>
         #include <emissivemap_pars_fragment>`);
         fs = fs.replace(`#include <clipping_planes_fragment>`, `#include <clipping_planes_fragment>
-        vec3 totalEmissiveRadiance = emissive;`);
+        vec3 totalEmissiveRadiance = emissive;
+        #include <emissivemap_fragment>`);
         fs = fs.replace(`vec3 outgoingLight = reflectedLight.indirectDiffuse;`, `vec3 outgoingLight = reflectedLight.indirectDiffuse + totalEmissiveRadiance;`);
         shader.fragmentShader = fs;
         shader.uniforms.emissive = { value: /*@__PURE__*/ new Color( 0x000000 ) };

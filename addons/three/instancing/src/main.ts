@@ -14,6 +14,7 @@ export interface MeshInstancingData extends AddonData {
 export class InstanceGenerator {
     static parseInstances(scene:Scene, data:MeshInstancingData) {
         const tmp = new Matrix4();
+        const tmp2 = new Matrix4();
 
         const toAdd = [];
 
@@ -33,13 +34,14 @@ export class InstanceGenerator {
                 );
                 // iM.uuid = mesh.uuid;
 
-                tmp.copy(mesh.matrix);
-                iM.setMatrixAt(0, tmp);
+                tmp2.copy(mesh.matrix);
+                iM.setMatrixAt(0, tmp2);
 
                 console.log(`${nI} instances found`);
 
                 for(let i=0; i<d.instances.length; i ++) {
                     tmp.fromArray(d.instances[i]);
+                    tmp.multiply(tmp2);
                     iM.setMatrixAt(i+1, tmp);
                 }
 

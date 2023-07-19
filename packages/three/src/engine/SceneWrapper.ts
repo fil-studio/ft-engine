@@ -31,8 +31,6 @@ export class SceneWrapper {
     load(onLoaded:Function=()=>{},onProgress:Function=(progress:number)=>{}) {
         if(this.loaded) return;
 
-        onProgress(0);
-
         SceneParser.load(
             this.id,
             this.materialLib,

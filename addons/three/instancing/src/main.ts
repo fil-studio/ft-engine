@@ -15,6 +15,7 @@ export class InstanceGenerator {
     static parseInstances(scene:Scene, data:MeshInstancingData) {
         const tmp = new Matrix4();
         const tmp2 = new Matrix4();
+        const tmp3 = new Matrix4();
 
         const toAdd = [];
 
@@ -40,8 +41,9 @@ export class InstanceGenerator {
                 console.log(`${nI} instances found`);
 
                 for(let i=0; i<d.instances.length; i ++) {
-                    tmp.fromArray(d.instances[i]);
-                    tmp.multiply(tmp2);
+                    tmp.copy(tmp2);
+                    tmp3.fromArray(d.instances[i]);
+                    tmp.multiply(tmp3);
                     iM.setMatrixAt(i+1, tmp);
                 }
 

@@ -1,6 +1,6 @@
 {
     "name": "@ft-engine/three-instancing",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Fil Engine's Three Instancing Addon",
     "module": "lib/main.js",
     "main": "lib/main.js",

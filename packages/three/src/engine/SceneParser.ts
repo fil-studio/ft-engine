@@ -397,6 +397,7 @@ export class SceneParser {
         if(!SceneParser.renderer) {
             return console.warn("Scene Parser is not initialized!");
         }
+        onProgress(0);
         io.load(`${SceneParser.basePath}sections/${scene}.json.gz`, (res)=>{
             const section = JSON.parse(res) as SectionData;
             const data = section.data as SceneData;
@@ -461,7 +462,7 @@ export class SceneParser {
         if(loop) action.setLoop(LoopRepeat, Infinity);
         else action.setLoop(LoopOnce, 1);
         action.play();
-        
+
     }
 
     static applyHDRIToScene(scene:Scene, settings:SceneSettings, tLib:TextureLib) {
@@ -489,7 +490,7 @@ export class SceneParser {
             console.warn('There is no background texture defined. Skipping...');
         }
     }
-    
+
     static applyToneMapping(settings:SceneSettings) {
         if(!SceneParser.renderer) {
             return console.warn('No WebGL Renderer instance found!');

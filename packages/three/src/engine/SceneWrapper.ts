@@ -17,7 +17,7 @@ export class SceneWrapper {
     textureLib:TextureLib;
     protected loaded:boolean = false;
     protected settings:SceneWrapperSettings;
-    
+
     data:SceneData;
     addons:Record<string, AddonData>;
 
@@ -30,6 +30,7 @@ export class SceneWrapper {
 
     load(onLoaded:Function=()=>{},onProgress:Function=(progress:number)=>{}) {
         if(this.loaded) return;
+
         SceneParser.load(
             this.id,
             this.materialLib,

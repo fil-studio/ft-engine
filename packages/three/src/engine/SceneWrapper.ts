@@ -75,4 +75,16 @@ export class SceneWrapper {
             ani.mixer.update(dt);
         }
     }
+
+    dispose() {
+        for(const mid in this.materialLib.materials) {
+            const mat = this.materialLib.materials[mid];
+            mat.dispose();
+        }
+
+        for(const tid in this.textureLib.textures) {
+            const tex = this.textureLib.textures[tid];
+            tex.dispose();
+        }
+    }
 }

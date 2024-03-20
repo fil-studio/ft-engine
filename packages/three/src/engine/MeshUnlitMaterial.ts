@@ -22,7 +22,7 @@ export class MeshUnlitMaterial extends MeshBasicMaterial {
         #include <emissivemap_fragment>`);
         fs = fs.replace(`vec3 outgoingLight = reflectedLight.indirectDiffuse;`, `vec3 outgoingLight = reflectedLight.indirectDiffuse + totalEmissiveRadiance;`);
         shader.fragmentShader = fs;
-        shader.uniforms.emissive = { value: this.emissive };
+        shader.uniforms.emissive = { value: /*@__PURE__*/ new Color( 0x000000 ) };
         for(const k in UniformsLib.emissivemap) {
             shader.uniforms[k] = UniformsLib.emissivemap[k];
         }
